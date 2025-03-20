@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="menu-button">☰</button>
+    <div id="menu" style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+      <label for="nodeName" style="margin-left: -30px;">Enter Model Name:</label>
+      <input type="text" id="nodeName" style="padding: 10px;" placeholder="e.g., ResNet">
+      <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
+        <button style="flex: 1; max-width: 200px;" onclick="searchNode()">Search</button>
+        <button style="flex: 1; max-width: 200px;" onclick="resetView()">Reset View</button>
+      </div>
+    
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; width: 100%;">
+        <button style="flex: 1 1 45%; background-color: salmon;" onclick="filterByCategory('common_deep')">
+          Common Deep
+        </button>
+        <button style="flex: 1 1 45%; background-color: orange;" onclick="filterByCategory('instance_segmentation')">
+          Instance Segmentation
+        </button>
+        <button style="flex: 1 1 45%; background-color: #9b6ae5;" onclick="filterByCategory('semantic_segmentation')">
+          Semantic Segmentation
+        </button>
+        <button style="flex: 1 1 45%; background-color: #6ADAE5;" onclick="filterByCategory('panoptic_segmentation')">
+          Panoptic Segmentation
+        </button>
+      </div>
+    
+      <!-- Container for the "Apply Filters" toggle -->
+      <div id="filterToggleContainer" style="display: flex; align-items: center; justify-content: flex-end; gap: 5px; white-space: nowrap;">
+        <label for="filterToggle" style="font-size: 14px;">Apply Filters</label>
+        <input type="checkbox" id="filterToggle">
+      </div>
+    
+      <!-- Slider container, initially hidden -->
+      <div id="sliderContainer" style="display: none; width: 100%;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 15px 0;">
+          <label for="fpsSlider" style="font-size: 14px; flex: 0 0 40%;">FPS:</label>
+          <input type="range" id="fpsSlider" min="0" max="1" step="0.01" value="0" style="flex: 1; margin-left: 10px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 15px 0;">
+          <label for="metricSlider" style="font-size: 14px; flex: 0 0 40%;" id="metricLabel">AP:</label>
+          <input type="range" id="apSlider" min="0" max="1" step="0.01" value="0" style="flex: 1; margin-left: 10px;">
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin: 15px 0;">
+          <label for="ageSlider" style="font-size: 14px; flex: 0 0 40%;">Year:</label>
+          <input type="range" id="ageSlider" min="2015" max="2024" step="1" value="2015" style="flex: 1; margin-left: 10px;">
+        </div>
+      </div>
+    </div>
+  
+  
+    </div>
+    <div id="cy"></div>
+
+  <!-- Graph container -->
+  <div id="cy"></div>
+
+  <!-- Legend -->
+  <div id="legend">
+    <div class="legend-item">
+      <div class="legend-color common-deep"></div>
+      <span>Common Deep Networks</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color instance-segmentation"></div>
+      <span>Instance Segmentation</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color semantic-segmentation"></div>
+      <span>Semantic Segmentation</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-color panoptic-segmentation"></div>
+      <span>Panoptic Segmentation</span>
+    </div>
+  </div>
+
+  <!-- Popup for node details -->
+  <div id="node-popup" class="node-popup"></div>
+
+  <!-- External libraries -->
+  <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+  <script src="https://unpkg.com/webcola/WebCola/cola.min.js"></script>
+  <script src="https://unpkg.com/cytoscape-cola/cytoscape-cola.js"></script>
+  <!-- Link to external JavaScript -->
+  <script src="framework.js"></script>
+</body>
+</html>

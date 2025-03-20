@@ -1,0 +1,255 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Burger menu button */
+#menu-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it stays above the menu */
+}
+
+/* Burger menu */
+#menu {
+  position: fixed;
+  top: 0;
+  left: -500px; /* Hidden off-screen */
+  height: 100%;
+  width: 250px;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/* Open state for menu */
+#menu.open {
+  left: 0; /* Slide in */
+}
+
+#menu label {
+  margin-left: 25px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+#menu input {
+  /*padding: 10px;*/
+  font-size: 16px;
+  margin-bottom: 10px;
+  width: calc(100% - 20px);
+}
+
+#menu button {
+  padding: 10px;
+  background-color: #313233;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#menu button:hover {
+  opacity: 0.9; /* Slight opacity on hover for visual feedback */
+  transform: scale(1.02); /* Slight scaling on hover */
+  transition: all 0.2s ease;
+}
+
+/* Cytoscape graph */
+#cy {
+  width: 100%;
+  height: 100vh;
+}
+#legend {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#legend .legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+#legend .legend-color {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+#legend .legend-color.common-deep {
+  background-color: salmon;
+}
+
+#legend .legend-color.instance-segmentation {
+  background-color: orange;
+}
+
+#legend .legend-color.semantic-segmentation {
+  background-color: #9b6ae5;
+}
+
+#legend .legend-color.panoptic-segmentation {
+  background-color: #6ADAE5;
+}
+
+ input[type="range"] {
+-webkit-appearance: none; /* Removes default styling */
+appearance: none;
+width: 100%;
+height: 8px; /* Height of the track */
+background: linear-gradient(to right, #007BFF 0%, #007BFF 0%, #ccc 0%, #ccc 100%);
+border-radius: 5px; /* Rounded corners */
+outline: none;
+opacity: 0.9;
+transition: background 0.2s;
+}
+
+/* Track color when focused or active */
+input[type="range"]:hover {
+background: #aaa;
+}
+
+/* Slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+-webkit-appearance: none; /* Removes default styling */
+appearance: none;
+width: 20px; /* Width of the thumb */
+height: 20px; /* Height of the thumb */
+background: #0056b3; /* Thumb color */
+border-radius: 50%; /* Make it circular */
+cursor: pointer;
+border: 2px solid #ffffff; /* Optional border */
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+transition: background 0.2s;
+}
+
+/* Thumb hover effect */
+input[type="range"]::-webkit-slider-thumb:hover {
+background: #505152;
+}
+
+/* Slider track for Firefox */
+input[type="range"]::-moz-range-track {
+width: 100%;
+height: 8px;
+background: #ccc;
+border-radius: 5px;
+}
+
+/* Slider thumb for Firefox */
+input[type="range"]::-moz-range-thumb {
+width: 20px;
+height: 20px;
+background: #313233;
+border-radius: 50%;
+cursor: pointer;
+border: 2px solid #ffffff;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Slider track for IE */
+input[type="range"]::-ms-track {
+width: 100%;
+height: 8px;
+background: transparent; /* Hide the default track */
+border-color: transparent;
+border-width: 8px 0;
+color: transparent;
+}
+
+/* Slider thumb for IE */
+input[type="range"]::-ms-thumb {
+width: 20px;
+height: 20px;
+background: #313233;
+border-radius: 50%;
+cursor: pointer;
+border: 2px solid #ffffff;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Active state */
+input[type="range"]:active::-webkit-slider-thumb {
+background: #1d1d1e;
+}
+
+.node-popup {
+position: absolute;
+display: none;
+/* Dark background for the “card” */
+background: #333;
+/* White text for contrast */
+color: #fff;
+/* Spacing and rounding */
+padding: 16px;
+border-radius: 8px;
+/* A subtle box-shadow */
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+/* Ensure it appears on top */
+z-index: 1000;
+/* You can tweak the font size, etc. */
+font-size: 14px;
+max-width: 220px;
+font-family: Arial, sans-serif;
+}
+
+.node-popup .model-title {
+margin: 0 0 10px 0; /* No top margin, small bottom margin */
+font-size: 1rem;    /* Slightly larger text for the title */
+}
+
+.node-popup table {
+margin-top: 8px;
+width: 100%;
+border-collapse: collapse;
+}
+
+.node-popup th,
+.node-popup td {
+border: 1px solid #ccc;
+padding: 4px;
+}
+
+.node-popup th {
+background-color: #444;
+color: #fff;
+}
+.node-popup .table-subtitle {
+font-size: 0.6rem;
+margin-top: 8px;
+font-style: italic;
+font-weight: normal; /* Or remove if you want default weight */
+}
+
+.node-popup a {
+color: #00bfff;
+text-decoration: none;
+}
+
+.node-popup a:hover {
+text-decoration: underline;
+}
