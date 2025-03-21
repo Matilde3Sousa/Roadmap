@@ -8,6 +8,9 @@
 
   <p align="center">
     An interactive tool built to help researchers explore and compare image segmentation models with ease.
+    <br />
+    <a href="https://github.com/othneildrew/Best-README-Template](https://matilde3sousa.github.io/Roadmap/"><strong>Explore the tool</strong></a>
+    <br />
   </p>
 </div>
 
